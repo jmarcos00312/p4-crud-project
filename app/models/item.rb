@@ -4,4 +4,6 @@ class Item < ApplicationRecord
   belongs_to :brand
   has_many :branded_items
 
+  # validates :name, :price, :img_url, :
+
 end

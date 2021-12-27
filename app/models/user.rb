@@ -5,4 +5,7 @@ class User < ApplicationRecord
 
     has_many :sold_brands, through: :sold_items, source: :brands
     has_many :purchased_brands, through: :purchased_items, source: :brands
+
+    # validates :username, :first_name, :last_name, :password, presence: true
+    # validates :admin, de
 end
