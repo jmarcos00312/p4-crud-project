@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_27_171528) do
+ActiveRecord::Schema.define(version: 2021_12_27_173202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_12_27_171528) do
     t.string "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin"
   end
 
   create_table "watch_lists", force: :cascade do |t|
@@ -68,6 +69,4 @@ ActiveRecord::Schema.define(version: 2021_12_27_171528) do
   add_foreign_key "items", "brands"
   add_foreign_key "watch_lists", "items"
   add_foreign_key "watch_lists", "users"
-  add_foreign_key "items", "users", column: "buyer_id"
-  add_foreign_key "items", "users", column: "seller_id"
 end
