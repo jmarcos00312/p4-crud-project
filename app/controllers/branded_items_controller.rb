@@ -1,2 +1,0 @@
-class BrandedItemsController < ApplicationController
-end
