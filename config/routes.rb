@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
   resources :branded_items
-  resources :watch_lists
   resources :items
   resources :users
   resources :brands
