@@ -18,15 +18,15 @@ class ApplicationController < ActionController::API
            status: :unprocessable_entity
   end
 
-  # def authorized
-  #   @current_user = User.find_by(id: session[:user_id])
+  def authorized
+    @current_user = User.find_by(id: session[:user_id])
 
-  #   unless session.include? :user_id
-  #     render json: {
-  #              errors: ['Invalid username or password'],
-  #            },
-  #            status: :unauthorized
-  #   end
-  # end
+    unless session.include? :user_id
+      render json: {
+               errors: ['Invalid username or password'],
+             },
+             status: :unauthorized
+    end
+  end
 
 end

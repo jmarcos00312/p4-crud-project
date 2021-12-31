@@ -3,7 +3,7 @@ class UsersController < ApplicationController
         render json: User.all
     end
 
-    def show
+    def me
         user = find_user
         render json: user
     end
@@ -13,8 +13,11 @@ class UsersController < ApplicationController
         user.update!(user_params)
         render json: user
     end
-    def create
-        render json: User.create!(user_params), status: :created
+
+    def create 
+        user = User.create!(user_params)
+        session[:user_id] = user.id
+        render json: user, status: :created
     end
 
     def destroy
