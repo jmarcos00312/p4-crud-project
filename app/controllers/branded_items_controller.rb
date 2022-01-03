@@ -1,0 +1,2 @@
+class BrandedItemsController < ApplicationController
+end
