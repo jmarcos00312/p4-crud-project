@@ -9,5 +9,5 @@ class User < ApplicationRecord
     # has_many :watch_lists
 
     # validates :username, :first_name, :last_name, :password, presence: true
-    validates :Email, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/, presence: true, uniqueness: true
+    validates :email, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/, presence: true, uniqueness: true
 end

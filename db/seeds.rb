@@ -9,9 +9,12 @@
 require 'csv'
 
 puts "creating admin-users"
-jeremiah = User.create(first_name: 'Jeremiah', last_name: 'Marcos', username:"jmarcos", password_digest: BCrypt::Password.create('jeremiah01'), admin: true, Email: 'jeremiah@gmail.com')
-terence = User.create(first_name: 'Terence', last_name: 'Stephens', username:"tstephens", password_digest: BCrypt::Password.create('terence01'), admin: true, Email: 'terence@gmail.com')
-daniel = User.create(first_name: 'Daniel', last_name: 'Sheehan', username:"dsheehan", password_digest: BCrypt::Password.create('daniel01'), admin: true, Email: 'daniel@gmail.com')
+# jeremiah = User.create(first_name: 'Jeremiah', last_name: 'Marcos', username:"jmarcos", password_digest: BCrypt::Password.create('jeremiah01'), admin: true)
+# terence = User.create(first_name: 'Terence', last_name: 'Stephens', username:"tstephens", password_digest: BCrypt::Password.create('terence01'), admin: true)
+# daniel = User.create(first_name: 'Daniel', last_name: 'Sheehan', username:"dsheehan", password_digest: BCrypt::Password.create('daniel01'), admin: true)
+jeremiah = User.create(first_name: 'Jeremiah', last_name: 'Marcos', username:"jmarcos", password_digest: BCrypt::Password.create('jeremiah01'), admin: true, email: 'jeremiah@gmail.com')
+terence = User.create(first_name: 'Terence', last_name: 'Stephens', username:"tstephens", password_digest: BCrypt::Password.create('terence01'), admin: true, email: 'terence@gmail.com')
+daniel = User.create(first_name: 'Daniel', last_name: 'Sheehan', username:"dsheehan", password_digest: BCrypt::Password.create('daniel01'), admin: true, email: 'daniel@gmail.com')
 
 puts "seeding brands"
 
