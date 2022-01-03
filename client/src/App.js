@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React, { useState, useEffect } from "react";
 
 function App() {
+  const [shoes, setShoes] = useState([])
+
+  useEffect(() => {
+    fetch('/items', { credentials: "include",}).then(r => r.json()).then(data => setShoes(data))
+  }, [])
+  console.log(shoes)
+
+  let everyshoes = shoes.map(shoes => {
+    return (
+      <div>
+        <h1>{shoes.name}</h1>
+        <img src={shoes.img_url} />
+      </div>
+    )
+  })
+  // let movieList = movies.map(movie => {
+  //   return (
+  //     <div className='d-flex'>
+  //       <div className="row_poster">
+  //         <div class="hover-container">
+  //           <img src={movie.img_url} alt='movie' onClick={() => history.push("/movies")}></img>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   )
+  // })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {everyshoes}
+      {/* <h1>Hello world</h1> */}
     </div>
   );
 }
