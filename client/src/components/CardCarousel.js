@@ -14,7 +14,7 @@ function CardCarousel({ name, price, rating, img, brand, sold, seller }) {
                 <p>price: {"$"}{price}</p>
                 <p>rating: {rating}</p>
                 <p>brand: {brand}</p>
-                <p>in stock: {sold}</p>
+                <p>In stock: {sold}</p>
                 <p>seller: {seller}</p>
                 {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
             </Carousel.Caption>
