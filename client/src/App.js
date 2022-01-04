@@ -1,39 +1,49 @@
 
 import './App.css';
-import React, { useState, useEffect } from "react";
+import Sneaker from "./components/Sneakers"
+import { useEffect, useState } from "react"
+import Login from "./components/Login"
+import Signup from "./components/Signup"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
-  const [shoes, setShoes] = useState([])
-
+  const [currentUser, setCurrentUser] = useState(null);
+  const [authenticated, setAuthenticated] = useState(false);
+  console.log(currentUser);
   useEffect(() => {
-    fetch('/items', { credentials: "include",}).then(r => r.json()).then(data => setShoes(data))
-  }, [])
-  console.log(shoes)
-
-  let everyshoes = shoes.map(shoes => {
-    return (
-      <div>
-        <h1>{shoes.name}</h1>
-        <img src={shoes.img_url} />
-      </div>
-    )
-  })
-  // let movieList = movies.map(movie => {
-  //   return (
-  //     <div className='d-flex'>
-  //       <div className="row_poster">
-  //         <div class="hover-container">
-  //           <img src={movie.img_url} alt='movie' onClick={() => history.push("/movies")}></img>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   )
-  // })
-
+    fetch("/me", {
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          setCurrentUser(user);
+          setAuthenticated(true);
+        });
+      } else {
+        setAuthenticated(true);
+      }
+    });
+  }, []);
   return (
     <div className="App">
-      {everyshoes}
-      {/* <h1>Hello world</h1> */}
+      <div className="home">
+        <Router>
+          <Routes>
+            {/* {currentUser ? (
+              <Route exact path="/sneakers" element={<Sneaker />} />
+            ) : (
+              <Route exact path="/signup" element={<Signup />} />
+            )} */}
+            <Route exact path="/sneakers" element={<Sneaker />} />
+            <Route path="/login" element={<Login setCurrentUser={setCurrentUser} />} />
+          </Routes>
+        </Router>
+      </div>
     </div>
   );
 }

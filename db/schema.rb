@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2022_01_03_162634) do
     t.string "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "admin"
+    t.boolean "admin", default: false, null: false
     t.string "email"
   end
 
