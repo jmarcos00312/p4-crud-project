@@ -1,6 +1,7 @@
 
 import './App.css';
 import React, { useState, useEffect } from "react";
+import Header from './Header';
 
 function App() {
   const [shoes, setShoes] = useState([])
@@ -31,10 +32,15 @@ function App() {
   // })
 
   return (
+      <>
+      <div>
+      <Header />
+      </div>
     <div className="App">
       {everyshoes}
       {/* <h1>Hello world</h1> */}
     </div>
+    </>
   );
 }
 

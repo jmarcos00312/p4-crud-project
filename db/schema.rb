@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 2022_01_03_162634) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "branded_items", force: :cascade do |t|
-    t.bigint "brand_id", null: false
-    t.bigint "item_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["brand_id"], name: "index_branded_items_on_brand_id"
-    t.index ["item_id"], name: "index_branded_items_on_item_id"
-  end
-
   create_table "brands", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -53,22 +44,9 @@ ActiveRecord::Schema.define(version: 2022_01_03_162634) do
     t.string "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "admin"
+    t.boolean "admin", default: false, null: false
     t.string "email"
   end
 
-  create_table "watch_lists", force: :cascade do |t|
-    t.bigint "item_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_watch_lists_on_item_id"
-    t.index ["user_id"], name: "index_watch_lists_on_user_id"
-  end
-
-  add_foreign_key "branded_items", "brands"
-  add_foreign_key "branded_items", "items"
   add_foreign_key "items", "brands"
-  add_foreign_key "watch_lists", "items"
-  add_foreign_key "watch_lists", "users"
 end
