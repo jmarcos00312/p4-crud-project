@@ -38,7 +38,8 @@ function SignupForm({ setCurrentUser }) {
     };
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <h1>NOT LOGGED IN</h1>
+            {/* <form onSubmit={handleSubmit}>
                 <h1>Sign Up</h1>
                 <p>
                     <label htmlFor="username">Username </label>
@@ -74,7 +75,7 @@ function SignupForm({ setCurrentUser }) {
                 <p>
                     <Link to="/">Log In</Link>
                 </p>
-            </form>
+            </form> */}
         </div>
     );
 }
