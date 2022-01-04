@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Carousel from 'react-bootstrap/Carousel'
 import CardCarousel from "./CardCarousel";
-import Header from "./Header";
 
-export default function Home() {
+export default function Sneaker() {
     const [shoes, setShoes] = useState([])
 
     useEffect(() => {
@@ -22,13 +21,10 @@ export default function Home() {
         )
     })
     return (
-        <>
-        <div>
-        <Header />
-        </div>
         <div className="App">
+            {/* <h1>hi</h1> */}
             {everyshoes}
         </div>
-        </>
     )
 }
+
