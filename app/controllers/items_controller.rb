@@ -32,10 +32,10 @@ class ItemsController < ApplicationController
     private
 
     def item_params
-        params.permit(:name, :price, :rating, :seller_id, :sold, :sale, :brand)
+        params.permit(:name, :price, :rating, :seller_id, :sold, :sale, :brand_id)
     end
 
     def find_item
-        render json: Item.find(params[:id])
+        Item.find(params[:id])
     end
 end
