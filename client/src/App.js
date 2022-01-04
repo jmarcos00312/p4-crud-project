@@ -34,13 +34,10 @@ function App() {
       <div className="home">
         <Router>
           <Routes>
-            {/* {currentUser ? (
-              <Route exact path="/sneakers" element={<Sneaker />} />
-            ) : (
-              <Route exact path="/signup" element={<Signup />} />
-            )} */}
             <Route exact path="/sneakers" element={<Sneaker />} />
             <Route path="/login" element={<Login setCurrentUser={setCurrentUser} />} />
+            <Route path="/signup" element={<Login setCurrentUser={setCurrentUser} />} />
+            
           </Routes>
         </Router>
       </div>
