@@ -1,4 +1,3 @@
-
 import './App.css';
 import Sneaker from "./components/Sneakers"
 import { useEffect, useState } from "react"
@@ -30,6 +29,8 @@ function App() {
     });
   }, []);
   return (
+      <>
+     
     <div className="App">
       <div className="home">
         <Router>
@@ -42,6 +43,7 @@ function App() {
         </Router>
       </div>
     </div>
+    </>
   );
 }
 
