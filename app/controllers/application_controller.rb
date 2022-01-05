@@ -10,7 +10,7 @@ class ApplicationController < ActionController::API
 
   def authenticate_user
     unless current_user
-      render json: { error: 'Not authorized' }, status: :unauthorized
+      render json: { error: 'Not Log in' }, status: :unauthorized
     end
   end
   def render_not_found(exception)

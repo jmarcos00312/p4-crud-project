@@ -1,41 +1,44 @@
 class ItemsController < ApplicationController
-    skip_before_action :authenticate_user, only: [:index, :show ]
-    def index
-        render json: Item.all
-    end
+  #   before_action :find_item, only: [:show, :update, :destroy, :sold]
+  skip_before_action :authenticate_user, only: %i[index show]
+  def index
+    item = Item.where(sold: false)
+    render json: item, status: :ok
+  end
 
-    def show
-        item = find_item
-        render json: item
-    end
+  def show
+    render json: @item, except: %i[created_at updated_at], status: :ok
+  end
 
-    def create
-        newItem = Item.create!(item_params)
-        render json: newItem, status: :created
-    end
+  def create
+    item = current_user.sold_items.create!(item_params)
+    render json: item, status_code: :created
+  end
 
-    def update
-        item = find_item
-        item.update!(item_params)
-        render json: item
-    end
+  def update
+    @item.update!(item_params)
+  end
 
-    def destroy
-        item = find_item
-        item.destroy
-        head :no_content
-    end
-    
+  def destroy
+    @item.destroy
+    head :no_content
+  end
+  def sold
+    @item.update!(sold: true, buyer: current_user)
+    render json: @item, status: :ok
+  end
 
+  def purchased_items
+    render json: current_user.purchased_items, status: :ok
+  end
 
+  private
 
-    private
+  def item_params
+    params.permit(:name, :price, :rating, :seller_id, :sold, :sale, :brand_id)
+  end
 
-    def item_params
-        params.permit(:name, :price, :rating, :seller_id, :sold, :sale, :brand_id)
-    end
-
-    def find_item
-        Item.find(params[:id])
-    end
+  def find_item
+    @item = Item.find(params[:id])
+  end
 end
