@@ -1,25 +1,27 @@
 import React from 'react'
-import { CarouselProvider, Slider } from "pure-react-carousel";
 import Carousel from 'react-bootstrap/Carousel'
-import { Card, Icon, Image } from 'semantic-ui-react'
-// import Card from 'react-bootstrap/Card'
+import {Card, Button} from 'react-bootstrap'
+
 function CardCarousel({ name, price, rating, img, brand, sold, seller }) {
     return (
         <div>
-            <Carousel.Item interval={1000}>
-                <img src={img} className="d-block w-100" />
-            </Carousel.Item>
-            <Carousel.Caption>
-                <h2>{name}</h2>
-                <p>price: {"$"}{price}</p>
-                <p>rating: {rating}</p>
-                <p>brand: {brand}</p>
-                <p>In stock: {sold}</p>
-                <p>seller: {seller}</p>
-                {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
-            </Carousel.Caption>
-        </div>
+            <Card style={{ width: '18rem', padding: '100px' }}>
+                <Card.Img variant="top" src={img} />
+                <Card.Body>
+                    <Card.Title variant="">{name}</Card.Title>
+                    <Card.Text>
+                        <p>price: {"$"}{price}</p>
+                        <p>rating: {rating}</p>
+                        <p>brand: {brand}</p>
+                        <p>In stock: {sold}</p>
+                        <p>seller: {seller}</p>
+                    </Card.Text>
+                    <Button variant="primary">Select</Button>
+                    <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+            </Card>
 
+        </div>
     )
 }
 

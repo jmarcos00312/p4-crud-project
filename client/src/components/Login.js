@@ -3,13 +3,13 @@ import { Link } from "react-router-dom"
 
 
 function Login({ setCurrentUser }) {
-    const [formData, setFormData] = useState({
+    const [loginForm, setLoginForm] = useState({
         username: "",
         password: "",
     });
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
 
     }
 
@@ -19,7 +19,7 @@ function Login({ setCurrentUser }) {
         fetch("/login", {
             method: "POST",
             headers: { 'Content-Type': "application/json", },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(loginForm)
         }).then(r => {
             if (r.ok) {
                 r.json().then(user => {
@@ -41,7 +41,7 @@ function Login({ setCurrentUser }) {
                     <input
                         type="text"
                         name="username"
-                        value={formData.username}
+                        value={loginForm.username}
                         onChange={(e) => handleChange(e)}
                     />
                 </p>
@@ -50,7 +50,7 @@ function Login({ setCurrentUser }) {
                     <input
                         type="password"
                         name="password"
-                        value={formData.password}
+                        value={loginForm.password}
                         onChange={(e) => handleChange(e)}
                     />
                 </p>

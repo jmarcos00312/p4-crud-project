@@ -2,6 +2,7 @@ import './App.css';
 import Sneaker from "./components/Sneakers"
 import { useEffect, useState } from "react"
 import Login from "./components/Login"
+import NewShoes from './components/NewShoes';
 import Signup from "./components/Signup"
 import Home from "./components/Home"
 import {
@@ -15,6 +16,9 @@ import {
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
+  const [newShoes, setNewShoes] = useState(false)
+
+
   console.log(currentUser);
   useEffect(() => {
     fetch("/me", {
@@ -36,21 +40,19 @@ function App() {
   }
   return (
     <>
+      <Router>
+        <Home currentUser={currentUser} setCurrentUser={setCurrentUser} setNewShoes={setNewShoes} />
+        {!currentUser && <Login setCurrentUser={setCurrentUser} /> }
+        <Sneaker />
+        {newShoes && <NewShoes />}
 
-      <div className="App">
-        <div className="home">
-          <Router>
-            <Home />
-            {currentUser ? (<Sneaker />) : (<Login setCurrentUser={setCurrentUser} />)}
-            <Routes>
-              {/* <Route exact path="/" element={<Home />} /> */}
-              <Route exact path="/sneakers" element={<Sneaker />} />
-              <Route path="/login" element={<Login setCurrentUser={setCurrentUser} />} />
-              <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
-            </Routes>
-          </Router>
-        </div>
-      </div>
+        <Routes>
+          <Route path="/newShoes" element={<NewShoes />} />
+          <Route path="/sneakers" element={<Sneaker />} />
+          <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
+        </Routes>
+
+      </Router>
     </>
   );
 }
