@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Carousel from 'react-bootstrap/Carousel'
 import CardCarousel from "./CardCarousel";
 import Header from "./Header";
-
+import Banner from "./Banner";
 export default function Home() {
     const [shoes, setShoes] = useState([])
 
@@ -25,10 +25,9 @@ export default function Home() {
         <>
         <div>
         <Header />
+        <Banner />
         </div>
-        <div className="App">
-            {everyshoes}
-        </div>
+       
         </>
     )
 }

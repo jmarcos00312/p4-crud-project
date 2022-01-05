@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Home from './components/Home';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -35,11 +36,7 @@ function App() {
       <div className="home">
         <Router>
           <Routes>
-            {/* {currentUser ? (
-              <Route exact path="/sneakers" element={<Sneaker />} />
-            ) : (
-              <Route exact path="/signup" element={<Signup />} />
-            )} */}
+          <Route exact path="/" element={<Home />} />
             <Route exact path="/sneakers" element={<Sneaker />} />
             <Route path="/login" element={<Login setCurrentUser={setCurrentUser} />} />
           </Routes>
