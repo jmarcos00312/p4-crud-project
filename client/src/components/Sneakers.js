@@ -13,10 +13,7 @@ export default function Sneaker() {
     let everyshoes = shoes.map(shoes => {
         return (
             <div className="App">
-                <Carousel>
-                    {console.log(shoes.sold)}
                     <CardCarousel name={shoes.name} price={shoes.price} img={shoes.img_url} brand={shoes.brand.name} rating={shoes.rating} sold={shoes.sold} seller={shoes.seller.first_name} />
-                </Carousel>
             </div>
         )
     })
