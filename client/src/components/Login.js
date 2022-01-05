@@ -24,11 +24,10 @@ function Login({ setCurrentUser }) {
             if (r.ok) {
                 r.json().then(user => {
                     setCurrentUser(user)
-                    console.log(user.username)
                 })
             } else {
                 r.json().then((errors) => {
-                    console.error(errors)
+                    alert("Something went wrong")
                 })
             }
         })
@@ -57,6 +56,10 @@ function Login({ setCurrentUser }) {
                 </p>
                 <p>
                     <button type="submit">Log In</button>
+                </p>
+                <p>Don't have an account?</p>
+                <p>
+                    <Link to="/signup">Sign Up</Link>
                 </p>
             </form>
         </div>

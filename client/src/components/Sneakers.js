@@ -22,7 +22,7 @@ export default function Sneaker() {
     })
     return (
         <div className="App">
-            {/* <h1>hi</h1> */}
+
             {everyshoes}
         </div>
     )

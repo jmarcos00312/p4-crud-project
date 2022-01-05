@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   #   before_action :find_item, only: [:show, :update, :destroy, :sold]
-  skip_before_action :authenticate_user, only: %i[index show]
+#   skip_before_action :authenticate_user, only: %i[index show]
   def index
     item = Item.where(sold: false)
     render json: item, status: :ok
