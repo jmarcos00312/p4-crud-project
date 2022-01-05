@@ -3,6 +3,7 @@ import Sneaker from "./components/Sneakers"
 import { useEffect, useState } from "react"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
+import Home from "./components/Home"
 import {
   BrowserRouter as Router,
   Routes,
@@ -28,21 +29,27 @@ function App() {
       }
     });
   }, []);
+
+  if (!authenticated) {
+    return <div></div>;
+  }
   return (
-      <>
-     
-    <div className="App">
-      <div className="home">
-        <Router>
-          <Routes>
-            <Route exact path="/sneakers" element={<Sneaker />} />
-            <Route path="/login" element={<Login setCurrentUser={setCurrentUser} />} />
-            <Route path="/signup" element={<Login setCurrentUser={setCurrentUser} />} />
-            
-          </Routes>
-        </Router>
+    <>
+
+      <div className="App">
+        <div className="home">
+          <Router>
+            <Home />
+            {currentUser ? (<Sneaker />) : (<Login setCurrentUser={setCurrentUser} />)}
+            <Routes>
+              {/* <Route exact path="/" element={<Home />} /> */}
+              <Route exact path="/sneakers" element={<Sneaker />} />
+              <Route path="/login" element={<Login setCurrentUser={setCurrentUser} />} />
+              <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
+            </Routes>
+          </Router>
+        </div>
       </div>
-    </div>
     </>
   );
 }
