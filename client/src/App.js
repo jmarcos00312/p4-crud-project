@@ -11,6 +11,7 @@ import {
   Link
 } from "react-router-dom";
 
+
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
