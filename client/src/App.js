@@ -39,6 +39,8 @@ function App() {
           <Route exact path="/" element={<Home />} />
             <Route exact path="/sneakers" element={<Sneaker />} />
             <Route path="/login" element={<Login setCurrentUser={setCurrentUser} />} />
+            <Route path="/signup" element={<Login setCurrentUser={setCurrentUser} />} />
+            
           </Routes>
         </Router>
       </div>
