@@ -10,7 +10,6 @@ function Login({ setCurrentUser }) {
 
     const handleChange = (e) => {
         setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
-
     }
 
     const handleSubmit = (e) => {
@@ -43,6 +42,7 @@ function Login({ setCurrentUser }) {
                         name="username"
                         value={loginForm.username}
                         onChange={(e) => handleChange(e)}
+                        required
                     />
                 </p>
                 <p>
@@ -52,6 +52,7 @@ function Login({ setCurrentUser }) {
                         name="password"
                         value={loginForm.password}
                         onChange={(e) => handleChange(e)}
+                        required
                     />
                 </p>
                 <p>

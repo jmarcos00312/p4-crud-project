@@ -6,7 +6,7 @@ import { GrContact } from "react-icons/gr"
 import { RiProfileLine } from "react-icons/ri"
 import Button from 'react-bootstrap/Button'
 
-export const NavBar = ({ currentUser, setCurrentUser, setNewShoes }) => {
+export const NavBar = ({ currentUser, setCurrentUser }) => {
     const handleLogout = () => {
         fetch("/logout", { method: "DELETE" });
         setCurrentUser(null)
@@ -23,8 +23,8 @@ export const NavBar = ({ currentUser, setCurrentUser, setNewShoes }) => {
                 (<Link to='/logout'> <button onClick={handleLogout}>Log out</button> </Link>) :
                 (<Link to='/login'> <IoLogInSharp size='100' color='black' /> </Link>)
             }
-            {currentUser && <Link to='newShoes'>
-                <Button variant='primary' onClick={setNewShoes(prev => !prev)}>Create New Shoes</Button>
+            {currentUser && <Link to='/newShoes'>
+                <Button variant='primary'>Create New Shoes</Button>
             </Link>}
 
         </div>

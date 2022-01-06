@@ -16,10 +16,9 @@ import {
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
-  const [newShoes, setNewShoes] = useState(false)
+  const [shoesArray, setShoesArray] = useState([])
 
 
-  console.log(currentUser);
   useEffect(() => {
     fetch("/me", {
       credentials: "include",
@@ -41,13 +40,12 @@ function App() {
   return (
     <>
       <Router>
-        <Home currentUser={currentUser} setCurrentUser={setCurrentUser} setNewShoes={setNewShoes} />
-        {!currentUser && <Login setCurrentUser={setCurrentUser} /> }
-        <Sneaker />
-        {newShoes && <NewShoes />}
+        <Home currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        {!currentUser && <Login setCurrentUser={setCurrentUser} />}
+        {currentUser && <NewShoes currentUser={currentUser} shoesArray={shoesArray} setShoesArray={setShoesArray} />}
+        <Sneaker setShoesArray={setShoesArray} shoesArray={shoesArray} />
 
         <Routes>
-          <Route path="/newShoes" element={<NewShoes />} />
           <Route path="/sneakers" element={<Sneaker />} />
           <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
         </Routes>
