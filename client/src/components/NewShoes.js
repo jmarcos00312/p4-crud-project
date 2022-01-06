@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import { image } from './4.jpg'
+import { useNavigate } from "react-router-dom"
+
 function NewShoes({ currentUser }) {
+    const navigate = useNavigate()
+
     const [addingShoes, setAddingShoes] = useState(false)
     const [newShoeForm, setNewShoeForm] = useState({
         name: "",
@@ -37,7 +41,7 @@ function NewShoes({ currentUser }) {
                     brand_id: 0,
                     seller_id: currentUser.id
                 })
-                window.location.reload(false)
+                navigate("/")
 
             } else {
                 r.json().then((errors) => {
@@ -45,6 +49,7 @@ function NewShoes({ currentUser }) {
                 });
             }
         })
+
     }
 
     return (

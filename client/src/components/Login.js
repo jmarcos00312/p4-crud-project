@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 function Login({ setCurrentUser }) {
+    const navigate = useNavigate()
     const [loginForm, setLoginForm] = useState({
         username: "",
         password: "",
@@ -23,6 +24,7 @@ function Login({ setCurrentUser }) {
             if (r.ok) {
                 r.json().then(user => {
                     setCurrentUser(user)
+                    navigate('/')
                 })
             } else {
                 r.json().then((errors) => {

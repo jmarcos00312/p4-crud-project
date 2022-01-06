@@ -5,6 +5,7 @@ import Login from "./components/Login"
 import NewShoes from './components/NewShoes';
 import Signup from "./components/Signup"
 import Home from "./components/Home"
+import Contact from "./components/Contact"
 import {
   BrowserRouter as Router,
   Routes,
@@ -40,10 +41,10 @@ function App() {
   return (
     <>
       <Home currentUser={currentUser} setCurrentUser={setCurrentUser} />
-      {!currentUser && <Login setCurrentUser={setCurrentUser} />}
+      {/* {!currentUser && <Login setCurrentUser={setCurrentUser} />} */}
 
       <Routes>
-        {/* <Route path="/contacts" element={ } /> */}
+        <Route path="/contacts" element={<Contact />} />
         <Route path="/" element={
           currentUser ? <Sneaker setShoesArray={setShoesArray} shoesArray={shoesArray} /> : <Sneaker />
         } />
@@ -53,6 +54,12 @@ function App() {
             shoesArray={shoesArray}
             setShoesArray={setShoesArray} />
 
+        } />
+        <Route path="/login" element={
+          <div>
+            <Login setCurrentUser={setCurrentUser} />
+            <Sneaker />
+          </div>
         } />
         <Route path="/sneakers" element={<Sneaker />} />
         <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
