@@ -32,6 +32,14 @@ function SignupForm({ setCurrentUser }) {
                 resp.json().then((user) => {
                     console.log(user);
                     setCurrentUser(user);
+                    setFormData({
+                        first_name: "",
+                        last_name: "",
+                        password: "",
+                        username: "",
+                        email: "",
+                        admin: false,
+                    })
                 });
             } else {
                 resp.json().then((errors) => {

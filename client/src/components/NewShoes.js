@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
+import { image } from './4.jpg'
 function NewShoes({ currentUser }) {
     const [addingShoes, setAddingShoes] = useState(false)
     const [newShoeForm, setNewShoeForm] = useState({
