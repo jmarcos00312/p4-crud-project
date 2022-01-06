@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
+import { useNavigate } from "react-router-dom"
 
 function CardCarousel({ currentUser, id, name, price, rating, img, brand, sold, seller, buyer }) {
     const [buy, setBuy] = useState(sold)
+    const navigate = useNavigate()
 
     const handleBuy = () => {
         if (currentUser.first_name !== seller) {
@@ -12,6 +14,8 @@ function CardCarousel({ currentUser, id, name, price, rating, img, brand, sold, 
                 headers: { 'Content-Type': "application/json", },
                 body: JSON.stringify(buy)
             }).then(r => r.json().then(result => console.log(result)))
+            navigate('/purchased_items')
+            window.location.reload(false)
         } else {
             alert("Can't buy your own shoes")
         }

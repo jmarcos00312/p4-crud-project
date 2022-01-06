@@ -6,6 +6,8 @@ import NewShoes from './components/NewShoes';
 import Signup from "./components/Signup"
 import Home from "./components/Home"
 import Contact from "./components/Contact"
+import PurchasedItems from './components/PurchasedItems';
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -18,8 +20,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
   const [shoesArray, setShoesArray] = useState([])
-
-
+  
   useEffect(() => {
     fetch("/me", {
       credentials: "include",
@@ -45,9 +46,6 @@ function App() {
 
       <Routes>
         <Route path="/contacts" element={<Contact />} />
-        <Route path="/" element={<Sneaker currentUser={currentUser}  />
-          // currentUser ? <Sneaker currentUser={currentUser} /> : <Sneaker />
-        } />
         <Route path="/newShoes" element={
           <NewShoes
             currentUser={currentUser}
@@ -62,7 +60,9 @@ function App() {
           </div>
         } />
         <Route path="/sneakers" element={<Sneaker />} />
+        <Route path="/purchased_items" element={<PurchasedItems />} />
         <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
+        <Route path="/" element={<Sneaker currentUser={currentUser} />} />
       </Routes>
 
 
