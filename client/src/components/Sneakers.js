@@ -7,9 +7,9 @@ export default function Sneaker({ currentUser }) {
     useEffect(() => {
         fetch('/items').then(r => r.json()).then(data => {
             setShoes(data)
-
         })
-    }, [setShoes])
+
+    }, [])
     let everyshoes = shoes.map(shoes => {
         return (
             <CardCarousel id={shoes.id} buyer={shoes.buyer_id} name={shoes.name} price={shoes.price} img={shoes.img_url} brand={shoes.brand.name} rating={shoes.rating} sold={shoes.sold} seller={shoes.seller.first_name} currentUser={currentUser} />
