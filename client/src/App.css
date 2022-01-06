@@ -4,25 +4,54 @@ body {
 }
 
 .header {
-
   height: auto;
-    background: white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: calc(10px + 2vmin);
-    opacity: .7;
-    
-  }
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-evenly;
+  font-size: calc(10px + 2vmin);
+  /* padding-left: 1000px; */
+  opacity: 0.7;
+}
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.row_poster {
+  display: flex;
+  /* flex-direction: row; */
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+  /* padding-bottom: 300px; */
+}
+.home {
+  margin-right: 35px;
+  margin-left: 35px;
+}
+.contacts {
+  margin-right: 10px;
+  margin-left: 35px;
+}
 
+.signup {
+  margin-right: 35px;
+  margin-left: 35px;
+}
+.shoes {
+  margin-right: 35px;
+}
 
+.login {
+  margin-right: 35px;
+  margin-left: 35px;
+}
 
 .App {
   text-align: center;
   display: flex;
-  width: 100%;
-
 }
 
 img {
@@ -30,7 +59,6 @@ img {
   max-height: 40em;
   width: 30em;
 }
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
