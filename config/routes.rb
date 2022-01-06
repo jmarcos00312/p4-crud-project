@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :items
-  resources :users, only: %i[destroy index]
+  resources :users, only: %i[destroy index show]
   resources :brands, only: %i[index show]
 
   post '/login', to: 'session#create'

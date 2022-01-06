@@ -2,28 +2,35 @@ class UsersController < ApplicationController
   # skip_before_action :authenticate_user, only: %i[create me]
 
   def index
-      render json: User.all
+    render json: User.all
+  end
+  def show
+    render json: find_user
   end
 
   def me
     if current_user
       render json: current_user, status: :ok
     else
-      render json: 'me error', status: :unauthorized
+      render json: 'You are not logged in yet', status: :unauthorized
     end
   end
 
   def create
-      user = User.create!(user_params)
-      session[:user_id] = user.id
-      render json: user, status: :created
-
+    user = User.create!(user_params)
+    session[:user_id] = user.id
+    render json: user, status: :created
   end
 
   def destroy
     user = find_user
-    user.destroy
-    head :no_content
+    byebug
+    if current_user.admin?
+      user.destroy
+      head :no_content
+    else
+      render json: "Can't Delete, you are not an admin"
+    end
   end
 
   private
