@@ -13,7 +13,7 @@ function CardCarousel({ name, price, rating, img, brand, sold, seller }) {
                         <p>price: {"$"}{price}</p>
                         <p>rating: {rating}</p>
                         <p>brand: {brand}</p>
-                        <p>In stock: {sold}</p>
+                        <p>In stock: {sold ? "False" : "True" }</p>
                         <p>seller: {seller}</p>
                     </Card.Text>
                     <Button variant="primary">Select</Button>

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import CardCarousel from "./CardCarousel";
 
-export default function Sneaker({ setShoesArray, shoesArray }) {
+export default function Sneaker() {
     const [shoes, setShoes] = useState([])
 
     useEffect(() => {
         fetch('/items').then(r => r.json()).then(data => {
             setShoes(data)
-            setShoesArray(data)
+
         })
     }, [setShoes])
     let everyshoes = shoes.map(shoes => {

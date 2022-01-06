@@ -40,6 +40,7 @@ function SignupForm({ setCurrentUser }) {
                         email: "",
                         admin: false,
                     })
+                    window.location.reload(false)
                 });
             } else {
                 resp.json().then((errors) => {

@@ -12,15 +12,15 @@ export const NavBar = ({ currentUser, setCurrentUser }) => {
         setCurrentUser(null)
     }
     return (
-        <div>
+        <div className="navbar">
             <GrContact size='85' color='black' />
 
-            <Link to='/signup'>
+            {!currentUser && <Link to='/signup'>
                 <RiProfileLine size='100' color='black' />
-            </Link>
+            </Link>}
 
             {currentUser ?
-                (<Link to='/logout'> <button onClick={handleLogout}>Log out</button> </Link>) :
+                (<Link to='/'> <button onClick={handleLogout}>Log out</button> </Link>) :
                 (<Link to='/login'> <IoLogInSharp size='100' color='black' /> </Link>)
             }
             {currentUser && <Link to='/newShoes'>

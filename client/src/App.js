@@ -39,18 +39,26 @@ function App() {
   }
   return (
     <>
-      <Router>
-        <Home currentUser={currentUser} setCurrentUser={setCurrentUser} />
-        {!currentUser && <Login setCurrentUser={setCurrentUser} />}
-        {currentUser && <NewShoes currentUser={currentUser} shoesArray={shoesArray} setShoesArray={setShoesArray} />}
-        <Sneaker setShoesArray={setShoesArray} shoesArray={shoesArray} />
+      <Home currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      {!currentUser && <Login setCurrentUser={setCurrentUser} />}
 
-        <Routes>
-          <Route path="/sneakers" element={<Sneaker />} />
-          <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
-        </Routes>
+      <Routes>
+        {/* <Route path="/contacts" element={ } /> */}
+        <Route path="/" element={
+          currentUser ? <Sneaker setShoesArray={setShoesArray} shoesArray={shoesArray} /> : <Sneaker />
+        } />
+        <Route path="/newShoes" element={
+          <NewShoes
+            currentUser={currentUser}
+            shoesArray={shoesArray}
+            setShoesArray={setShoesArray} />
 
-      </Router>
+        } />
+        <Route path="/sneakers" element={<Sneaker />} />
+        <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
+      </Routes>
+
+
     </>
   );
 }
