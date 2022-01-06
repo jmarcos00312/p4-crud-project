@@ -41,12 +41,12 @@ function App() {
   return (
     <>
       <Home currentUser={currentUser} setCurrentUser={setCurrentUser} />
-      {/* {!currentUser && <Login setCurrentUser={setCurrentUser} />} */}
+
 
       <Routes>
         <Route path="/contacts" element={<Contact />} />
-        <Route path="/" element={
-          currentUser ? <Sneaker setShoesArray={setShoesArray} shoesArray={shoesArray} /> : <Sneaker />
+        <Route path="/" element={<Sneaker currentUser={currentUser}  />
+          // currentUser ? <Sneaker currentUser={currentUser} /> : <Sneaker />
         } />
         <Route path="/newShoes" element={
           <NewShoes

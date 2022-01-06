@@ -19,6 +19,14 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
 }
+.row_poster {
+  display: flex;
+  /* flex-direction: row; */
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+  /* padding-bottom: 300px; */
+}
 .home {
   margin-right: 35px;
   margin-left: 35px;

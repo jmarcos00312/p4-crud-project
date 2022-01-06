@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Button from 'react-bootstrap/Button'
-import { image } from './4.jpg'
 import { useNavigate } from "react-router-dom"
 
 function NewShoes({ currentUser }) {
