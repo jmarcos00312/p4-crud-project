@@ -1,4 +1,4 @@
-class BrandsController < ApplicationController
+class Api::BrandsController < ApplicationController
     def index
         render json: Brand.all, include: 'items'
     end

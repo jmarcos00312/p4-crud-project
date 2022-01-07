@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class Api::ItemsController < ApplicationController
   # skip_before_action :authenticate_user, only: [:index, :show, :create, :destroy]
   before_action :find_item, only: %i[show update destroy sold]
   def index

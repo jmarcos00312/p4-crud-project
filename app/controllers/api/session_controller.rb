@@ -1,4 +1,4 @@
-class SessionController < ApplicationController
+class Api::SessionController < ApplicationController
   # skip_before_action :authenticate_user, only: %i[create logout]
 
   def create

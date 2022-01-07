@@ -22,7 +22,7 @@ function App() {
   const [shoesArray, setShoesArray] = useState([])
   
   useEffect(() => {
-    fetch("/me", {
+    fetch("api/me", {
       credentials: "include",
     }).then((res) => {
       if (res.ok) {
