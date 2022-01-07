@@ -14,7 +14,7 @@ function CardCarousel({ currentUser, id, name, price, rating, img, brand, sold, 
                 headers: { 'Content-Type': "application/json", },
                 body: JSON.stringify(buy)
             }).then(r => r.json().then(result => console.log(result)))
-            navigate('/purchased_items')
+            navigate('api/purchased_items')
             window.location.reload(false)
         } else {
             alert("Can't buy your own shoes")
