@@ -36,12 +36,9 @@ function CardCarousel({ currentUser, id, name, price, rating, img, brand, sold, 
                         <p>In stock: {sold ? "False" : "True"}</p>
                         <p>seller: {seller}</p>
                     </Card.Text>
-                    {currentUser ?
+                    {currentUser &&
                         <div>
                             <Button variant="primary" onClick={handleBuy}>Buy</Button>
-                        </div> :
-                        <div>
-                            <h1>You are not logged in</h1>
                         </div>
                     }
 
