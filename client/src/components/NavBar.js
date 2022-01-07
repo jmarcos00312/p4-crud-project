@@ -1,5 +1,4 @@
 import React from 'react';
-import NewShoes from './NewShoes'
 import { Link } from "react-router-dom"
 import { RiProfileLine } from "react-icons/ri"
 import { BiLogIn } from "react-icons/bi";
@@ -13,7 +12,7 @@ export const NavBar = ({ currentUser, setCurrentUser }) => {
         fetch("/logout", { method: "DELETE" });
         setCurrentUser(null)
     }
-
+    
 
     return (
         <div className="navbar">
