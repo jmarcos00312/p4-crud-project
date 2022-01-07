@@ -10,7 +10,7 @@ import { MdShoppingCart } from "react-icons/md"
 
 export const NavBar = ({ currentUser, setCurrentUser }) => {
     const handleLogout = () => {
-        fetch("/logout", { method: "DELETE" });
+        fetch("api/logout", { method: "DELETE" });
         setCurrentUser(null)
     }
 

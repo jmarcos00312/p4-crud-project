@@ -9,13 +9,12 @@ function CardCarousel({ currentUser, id, name, price, rating, img, brand, sold, 
     const handleBuy = () => {
         if (currentUser.first_name !== seller) {
             console.log("same")
-            fetch(`/items/${id}/sold`, {
+            fetch(`api/items/${id}/sold`, {
                 method: "PATCH",
                 headers: { 'Content-Type': "application/json", },
                 body: JSON.stringify(buy)
             }).then(r => r.json().then(result => console.log(result)))
             navigate('/purchased_items')
-            window.location.reload(false)
         } else {
             alert("Can't buy your own shoes")
         }

@@ -5,7 +5,7 @@ export default function Sneaker({ currentUser }) {
     const [shoes, setShoes] = useState([])
 
     useEffect(() => {
-        fetch('/items').then(r => r.json()).then(data => {
+        fetch('api/items').then(r => r.json()).then(data => {
             setShoes(data)
         })
 

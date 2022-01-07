@@ -9,7 +9,7 @@ function PurchasedItems() {
 
 
     useEffect(() => {
-        fetch('/purchased_items').then(r => r.json()).then(data => {
+        fetch('api/purchased_items').then(r => r.json()).then(data => {
             setPurchased(data)
 
         })

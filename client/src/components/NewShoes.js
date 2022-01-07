@@ -28,7 +28,7 @@ function NewShoes({ currentUser }) {
             },
             body: JSON.stringify(newShoeForm),
         };
-        fetch('/items', configObj).then(r => {
+        fetch('api/items', configObj).then(r => {
             if (r.ok) {
                 r.json().then(added => console.log(added))
                 setNewShoeForm({
