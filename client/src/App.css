@@ -1,4 +1,5 @@
 body {
+  /* align-items: center; */
   background: #141414;
   color: #ffffff;
 }
@@ -11,9 +12,58 @@ body {
   align-items: stretch;
   justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
-  /* padding-left: 1000px; */
   opacity: 0.7;
 }
+.form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.login {
+  text-align: center;
+}
+
+.formContainer {
+  max-width: 300px;
+  display: flex;
+  justify-content: "center";
+  align-items: "center";
+  margin: auto;
+}
+input[type="submit"] {
+  padding: 5px 15px;
+  background: #ccc;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+input[type="submit"] {
+  padding: 5px 15px;
+  background: #ccc;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+input[type="text"] {
+  padding: 5px 15px;
+  background: white;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+input[type="password"] {
+  padding: 5px 15px;
+  background: white;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .navbar {
   display: flex;
   flex-direction: row;
@@ -21,11 +71,18 @@ body {
 }
 .row_poster {
   display: flex;
-  /* flex-direction: row; */
   overflow-y: hidden;
   overflow-x: scroll;
   padding: 20px;
-  /* padding-bottom: 300px; */
+}
+.new-shoe {
+  display: flex;
+  flex-direction: column;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .home {
   margin-right: 35px;

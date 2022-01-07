@@ -50,9 +50,9 @@ function SignupForm({ setCurrentUser }) {
         });
     };
     return (
-        <div>
+        <div className="formContainer">
             {/* <h1>NOT LOGGED IN</h1> */}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="form">
                 <h1>Create Account</h1>
                 <label>
                     First Name:
@@ -99,7 +99,7 @@ function SignupForm({ setCurrentUser }) {
                         onChange={(e) => handleChange(e)}
                         required />
                 </label>
-                <button>Submit</button>
+                <input type="submit" value="send" />
             </form>
         </div>
     );
