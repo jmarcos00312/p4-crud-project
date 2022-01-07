@@ -51,12 +51,10 @@ function NewShoes({ currentUser }) {
     }
 
     return (
-        <div>
+        <div className="formContainer">
             {!currentUser && <div><h1>You are not logged in</h1></div>}
-            {/* {console.log(id)} */}
-            {/* {console.log(currentUser)} */}
-            <h1>FORM HERE</h1>
-            <form onSubmit={handleSubmit} id="shoe-form">
+
+            <form onSubmit={handleSubmit} id="shoe-form" className="form">
                 <h1>Create New Shoes</h1>
                 <label>
                     Shoe Name:
@@ -72,6 +70,7 @@ function NewShoes({ currentUser }) {
                     <input
                         name="price"
                         type="number"
+                        placeholder="$"
                         value={newShoeForm.price}
                         onChange={(e) => handleChange(e)}
                         required />

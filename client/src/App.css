@@ -1,19 +1,86 @@
 body {
+  /* align-items: center; */
   background: #141414;
   color: #ffffff;
 }
 
 .header {
-  height: auto;
   background: white;
+  opacity: 0.7;
+  /* height: auto;
   display: flex;
   flex-direction: row;
-  align-items: stretch;
-  justify-content: space-evenly;
+  /* align-items: stretch; */
+  /* justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
-  /* padding-left: 1000px; */
-  opacity: 0.7;
+  */
 }
+.form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.login {
+  text-align: center;
+}
+.ContactContainer {
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+  font-size: 1.3em;
+  margin: auto;
+}
+.contacts {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  font-size: 3em;
+  /* padding-bottom: 1em; */
+}
+
+.formContainer {
+  max-width: 300px;
+  display: flex;
+  justify-content: "center";
+  align-items: "center";
+  margin: auto;
+}
+input[type="submit"] {
+  padding: 5px 15px;
+  background: #ccc;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+input[type="submit"] {
+  padding: 5px 15px;
+  background: #ccc;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+input[type="text"] {
+  padding: 5px 15px;
+  background: white;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+input[type="password"] {
+  padding: 5px 15px;
+  background: white;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .navbar {
   display: flex;
   flex-direction: row;
@@ -21,22 +88,33 @@ body {
 }
 .row_poster {
   display: flex;
-  /* flex-direction: row; */
   overflow-y: hidden;
   overflow-x: scroll;
   padding: 20px;
-  /* padding-bottom: 300px; */
 }
-.home {
+.new-shoe {
+  display: flex;
+  flex-direction: column;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* .home {
   margin-right: 35px;
   margin-left: 35px;
 }
 .contacts {
   margin-right: 10px;
   margin-left: 35px;
+} */
+.cart {
+  /* margin-right: 10px;
+  margin-left: 35px; */
 }
 
-.signup {
+/* .signup {
   margin-right: 35px;
   margin-left: 35px;
 }
@@ -47,7 +125,7 @@ body {
 .login {
   margin-right: 35px;
   margin-left: 35px;
-}
+} */
 
 .App {
   text-align: center;

@@ -34,7 +34,7 @@ function Login({ setCurrentUser }) {
         })
     }
     return (
-        <div>
+        <div className="login">
             <form onSubmit={handleSubmit}>
                 <h1>Welcome Back</h1>
                 <p>
