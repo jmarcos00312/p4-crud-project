@@ -5,6 +5,9 @@ import Login from "./components/Login"
 import NewShoes from './components/NewShoes';
 import Signup from "./components/Signup"
 import Home from "./components/Home"
+import Contact from "./components/Contact"
+import PurchasedItems from './components/PurchasedItems';
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,10 +19,8 @@ import {
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
-  const [newShoes, setNewShoes] = useState(false)
-
-
-  console.log(currentUser);
+  const [shoesArray, setShoesArray] = useState([])
+  
   useEffect(() => {
     fetch("/me", {
       credentials: "include",
@@ -40,19 +41,31 @@ function App() {
   }
   return (
     <>
-      <Router>
-        <Home currentUser={currentUser} setCurrentUser={setCurrentUser} setNewShoes={setNewShoes} />
-        {!currentUser && <Login setCurrentUser={setCurrentUser} /> }
-        <Sneaker />
-        {newShoes && <NewShoes />}
+      <Home currentUser={currentUser} setCurrentUser={setCurrentUser} />
 
-        <Routes>
-          <Route path="/newShoes" element={<NewShoes />} />
-          <Route path="/sneakers" element={<Sneaker />} />
-          <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
-        </Routes>
 
-      </Router>
+      <Routes>
+        <Route path="/contacts" element={<Contact />} />
+        <Route path="/newShoes" element={
+          <NewShoes
+            currentUser={currentUser}
+            shoesArray={shoesArray}
+            setShoesArray={setShoesArray} />
+
+        } />
+        <Route path="/login" element={
+          <div>
+            <Login setCurrentUser={setCurrentUser} />
+            <Sneaker />
+          </div>
+        } />
+        <Route path="/sneakers" element={<Sneaker />} />
+        <Route path="/purchased_items" element={<PurchasedItems />} />
+        <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
+        <Route path="/" element={<Sneaker currentUser={currentUser} />} />
+      </Routes>
+
+
     </>
   );
 }

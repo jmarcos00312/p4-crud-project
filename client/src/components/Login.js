@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 function Login({ setCurrentUser }) {
+    const navigate = useNavigate()
     const [loginForm, setLoginForm] = useState({
         username: "",
         password: "",
@@ -10,7 +11,6 @@ function Login({ setCurrentUser }) {
 
     const handleChange = (e) => {
         setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
-
     }
 
     const handleSubmit = (e) => {
@@ -24,6 +24,7 @@ function Login({ setCurrentUser }) {
             if (r.ok) {
                 r.json().then(user => {
                     setCurrentUser(user)
+                    navigate('/')
                 })
             } else {
                 r.json().then((errors) => {
@@ -33,7 +34,7 @@ function Login({ setCurrentUser }) {
         })
     }
     return (
-        <div>
+        <div className="login">
             <form onSubmit={handleSubmit}>
                 <h1>Welcome Back</h1>
                 <p>
@@ -43,6 +44,7 @@ function Login({ setCurrentUser }) {
                         name="username"
                         value={loginForm.username}
                         onChange={(e) => handleChange(e)}
+                        required
                     />
                 </p>
                 <p>
@@ -52,6 +54,7 @@ function Login({ setCurrentUser }) {
                         name="password"
                         value={loginForm.password}
                         onChange={(e) => handleChange(e)}
+                        required
                     />
                 </p>
                 <p>

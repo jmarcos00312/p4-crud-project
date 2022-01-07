@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 
 function SignupForm({ setCurrentUser }) {
     const [formData, setFormData] = useState({
+        first_name: "",
+        last_name: "",
+        password: "",
         username: "",
         email: "",
-        password: "",
+        admin: false,
     });
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        console.log(formData);
     };
 
     const handleSubmit = (e) => {
@@ -28,6 +32,15 @@ function SignupForm({ setCurrentUser }) {
                 resp.json().then((user) => {
                     console.log(user);
                     setCurrentUser(user);
+                    setFormData({
+                        first_name: "",
+                        last_name: "",
+                        password: "",
+                        username: "",
+                        email: "",
+                        admin: false,
+                    })
+                    window.location.reload(false)
                 });
             } else {
                 resp.json().then((errors) => {
@@ -37,45 +50,57 @@ function SignupForm({ setCurrentUser }) {
         });
     };
     return (
-        <div>
-            <h1>NOT LOGGED IN</h1>
-            {/* <form onSubmit={handleSubmit}>
-                <h1>Sign Up</h1>
-                <p>
-                    <label htmlFor="username">Username </label>
+        <div className="formContainer">
+            {/* <h1>NOT LOGGED IN</h1> */}
+            <form onSubmit={handleSubmit} className="form">
+                <h1>Create Account</h1>
+                <label>
+                    First Name:
                     <input
+                        name="first_name"
                         type="text"
+                        value={formData.first_name}
+                        onChange={(e) => handleChange(e)}
+                        required />
+                </label>
+                <label>
+                    Last Name:
+                    <input
+                        name="last_name"
+                        type="text"
+                        value={formData.last_name}
+                        onChange={(e) => handleChange(e)}
+                        required />
+                </label>
+                <label>
+                    Username:
+                    <input
                         name="username"
+                        type="text"
                         value={formData.username}
                         onChange={(e) => handleChange(e)}
-                    />
-                </p>
-                <p>
-                    <label htmlFor="email">Email </label>
+                        required />
+                </label>
+                <label>
+                    Email:
                     <input
-                        type="text"
                         name="email"
+                        type="text"
                         value={formData.email}
                         onChange={(e) => handleChange(e)}
-                    />
-                </p>
-                <p>
-                    <label htmlFor="password">Password </label>
+                        required />
+                </label>
+                <label>
+                    Password:
                     <input
-                        type="password"
                         name="password"
+                        type="password"
                         value={formData.password}
                         onChange={(e) => handleChange(e)}
-                    />
-                </p>
-                <p>
-                    <button type="submit">Sign Up</button>
-                </p>
-                <p>Have an account?</p>
-                <p>
-                    <Link to="/">Log In</Link>
-                </p>
-            </form> */}
+                        required />
+                </label>
+                <input type="submit" value="send" />
+            </form>
         </div>
     );
 }

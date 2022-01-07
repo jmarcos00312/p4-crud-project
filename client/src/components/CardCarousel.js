@@ -1,8 +1,28 @@
-import React from 'react'
-import Carousel from 'react-bootstrap/Carousel'
-import {Card, Button} from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Card, Button } from 'react-bootstrap'
+import { useNavigate } from "react-router-dom"
 
-function CardCarousel({ name, price, rating, img, brand, sold, seller }) {
+function CardCarousel({ currentUser, id, name, price, rating, img, brand, sold, seller, buyer }) {
+    const [buy, setBuy] = useState(sold)
+    const navigate = useNavigate()
+
+    const handleBuy = () => {
+        if (currentUser.first_name !== seller) {
+            console.log("same")
+            fetch(`/items/${id}/sold`, {
+                method: "PATCH",
+                headers: { 'Content-Type': "application/json", },
+                body: JSON.stringify(buy)
+            }).then(r => r.json().then(result => console.log(result)))
+            navigate('/purchased_items')
+            window.location.reload(false)
+        } else {
+            alert("Can't buy your own shoes")
+        }
+    }
+
+
+
     return (
         <div>
             <Card style={{ width: '18rem', padding: '100px' }}>
@@ -13,11 +33,15 @@ function CardCarousel({ name, price, rating, img, brand, sold, seller }) {
                         <p>price: {"$"}{price}</p>
                         <p>rating: {rating}</p>
                         <p>brand: {brand}</p>
-                        <p>In stock: {sold}</p>
+                        <p>In stock: {sold ? "False" : "True"}</p>
                         <p>seller: {seller}</p>
                     </Card.Text>
-                    <Button variant="primary">Select</Button>
-                    <Button variant="primary">Go somewhere</Button>
+                    {currentUser &&
+                        <div>
+                            <Button variant="primary" onClick={handleBuy}>Buy</Button>
+                        </div>
+                    }
+
                 </Card.Body>
             </Card>
 

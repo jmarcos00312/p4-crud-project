@@ -1,22 +1,23 @@
 class ItemsController < ApplicationController
-  #   before_action :find_item, only: [:show, :update, :destroy, :sold]
-#   skip_before_action :authenticate_user, only: %i[index show]
+  # skip_before_action :authenticate_user, only: [:index, :show, :create, :destroy]
+  before_action :find_item, only: %i[show update destroy sold]
   def index
-    item = Item.where(sold: false)
-    render json: item, status: :ok
+    # item = Item.where(sold: false)
+    render json: Item.all, status: :ok
   end
 
   def show
-    render json: @item, except: %i[created_at updated_at], status: :ok
+    render json: @item, status: :ok
   end
 
   def create
-    item = current_user.sold_items.create!(item_params)
-    render json: item, status_code: :created
+    newItem = Item.create!(item_params)
+    render json: newItem, status: :created
   end
 
   def update
     @item.update!(item_params)
+    render json: item
   end
 
   def destroy
@@ -32,10 +33,19 @@ class ItemsController < ApplicationController
     render json: current_user.purchased_items, status: :ok
   end
 
+  
   private
-
   def item_params
-    params.permit(:name, :price, :rating, :seller_id, :sold, :sale, :brand_id)
+    params.permit(
+      :name,
+      :price,
+      :rating,
+      :seller_id,
+      :sold,
+      :sale,
+      :brand_id,
+      :img_url,
+    )
   end
 
   def find_item
